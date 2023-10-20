@@ -11,6 +11,14 @@ Formulario web de registro de reclamaciones/sugerencias
 
         EXPOSE 80
     ```
+* Creación del contenedor:
+    ```
+    docker build -t calidad-php .
+    ```
+* Recontruir un contenedor ya creado:
+    ```
+
+    ```
 * Puesta en marcha del servidor web:
     ```
     docker run -p 3000:80 -d calidad-php
@@ -19,6 +27,7 @@ Formulario web de registro de reclamaciones/sugerencias
         ```
         pwd[nos devuelve la ruta absoluta donde estamos trabajando], añadimos /src : /var/www/html [carpeta de destino]
         docker run -p 5000:80 -d -v $(pwd)/src:/var/www/html/ calidad-php
+        [docker run -p 3000:80 -d -v C:/Users/andra/Desktop/calidad/src:/var/www/html/ calidad-php] <- mia
         ```
 
 - Descargar la imagen de mysql
