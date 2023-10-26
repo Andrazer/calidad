@@ -1,28 +1,20 @@
-version: '3.1'
-
+version: '3'
 services:
-  web:
-    volumes:
-      - /src:/var/www/html
-    image: joomla
-    restart: always
-    links:
-      - joomladb:mysql
+  app:
+    image: calidad-php
     ports:
-      - 8080:80
-    environment:
-      JOOMLA_DB_HOST: joomladb
-      JOOMLA_DB_PASSWORD: joomla
-      JOOMLA_DB_USER: joomla
-      JOOMLA_DB_NAME: joomla
-
-  joomladb:
-    image: mysql:5.7
+      - "3000:80"
     volumes:
-      - /data:/var/lib/mysql
-    restart: always
+      - C:/Users/andra/Desktop/calidad/src:/var/www/html
+    networks:
+      - my_network
+
+  db:
+    image: mysql:latest
     environment:
-      MYSQL_ROOT_PASSWORD: joomla
-      MYSQL_USER: joomla
-      MYSQL_DATABASE: joomla
-      MYSQL_PASSWORD: joomla
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - my_network
+
+networks:
+  my_network:
