@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <title>Calidad de la enseñanza</title>
-</head>
-<body>
+<?php
+// inicio.php
+include('header.php');
+?>
+
 
   <?php
 
@@ -71,7 +67,13 @@
     
             if ($insert_stmt->execute() === true) {
                 $formularioVisible = false; // Ocultar el formulario después de enviar
-                echo "Datos insertados correctamente en la base de datos.";
+                echo "
+                <p>Datos insertados correctamente en la base de datos.</p>
+                
+                <a href='http://localhost:3000/'>
+                  <button type='submit' class='btn btn-primary'>Volver</button>
+                </a>
+                ";
             } else {
                 echo "Error al insertar datos en la base de datos: " . $insert_stmt->error;
             }
@@ -126,16 +128,19 @@
         <label for="email">Email:</label>
         <input type="text" class="form-control" name="email" id="email">
       </div>
-      <div>
+      <div class="container">
         <button type="submit" class="btn btn-primary">Enviar</button>
       </div>
     </form>
+    <div class="container">
+      <a href='http://localhost:3000/vista_tabla.php'>
+        <button type='submit' class='btn btn-primary'>Lista de sugerencias</button>
+      </a>
+    </div>
     <?php
     }
     ?>
-  </div>
-
-
+</div>
 
   
   <script src="assets/js/bootstrap.min.js"></script>

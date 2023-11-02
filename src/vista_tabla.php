@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <style>
-        .fixed-table {
-            max-height: 400px; /* Establece la altura máxima de la tabla */
-            overflow-y: auto; /* Agrega la barra de desplazamiento vertical cuando sea necesario */
-        }
-    </style>
-    <title>Registros de la Base de Datos</title>
-</head>
-<body>
+<?php
+// inicio.php
+include('header.php');
+?>
+
     <?php
     // Tu código PHP para la conexión a la base de datos y consulta aquí
     $servername = "db"; // Este es el nombre del contenedor de MySQL
@@ -30,7 +20,7 @@
     <div class="container">
         <h1 class="text-primary">Registros de la Base de Datos</h1>
         <div class="fixed-table">
-            <table class='table'>
+            <table class='table table-striped table-hover'>
                 <tr>
                     <th>ID</th>
                     <th>Tipo de Incidencia</th>
@@ -66,8 +56,13 @@
                 ?>
             </table>
         </div>
+        <div class="container">
+            <a href='http://localhost:3000/'>
+                <button type='submit' class='btn btn-primary'>Volver</button>
+            </a>
+        </div>
+    <script src="assets/js/bootstrap.min.js"></script>
     </div>
 
-    <script src="assets/js/bootstrap.min.js"></script>
 </body>
 </html>
