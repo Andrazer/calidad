@@ -90,25 +90,28 @@ include('header.php');
         // Mostrar el formulario si la variable $formularioVisible es verdadera
     ?>
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-      <div class="form-group">
-        <label for="t_incidencia">Tipo de Incidencia:</label>
-          <select class="form-control" name="t_incidencia" id="t_incidencia">
-            <option value="RECLAMACION">RECLAMACIÓN</option>
-            <option value="SUGERENCIA">SUGERENCIA</option>
-            <option value="QUEJA">QUEJA</option>
-          </select>
-      </div>
-      <div class="form-group">
-        <label for="t_usuario">Tipo de Usuario:</label>
-          <select class="form-control" name="t_usuario" id="t_usuario" required>
-            <option value="PROFESOR">PROFESOR</option>
-            <option value="ALUMNO">ALUMNO</option>
-          </select>
-      </div>
-      <div class="form-group">
-          <label for="categoria">Categoría:</label>
-          <input type="text" class="form-control" name="categoria" id="categoria" required>
-      </div>
+      <div class="container d-flex">
+        <div class="form-group col-4">
+          <label for="t_incidencia">Tipo de Incidencia:</label>
+            <select class="form-control" name="t_incidencia" id="t_incidencia">
+              <option value="RECLAMACION">RECLAMACIÓN</option>
+              <option value="SUGERENCIA">SUGERENCIA</option>
+              <option value="QUEJA">QUEJA</option>
+            </select>
+        </div>
+        <div class="form-group col-4">
+          <label for="t_usuario">Tipo de Usuario:</label>
+            <select class="form-control" name="t_usuario" id="t_usuario" required>
+              <option value="PROFESOR">PROFESOR</option>
+              <option value="ALUMNO">ALUMNO</option>
+            </select>
+        </div>
+        <div class="form-group col-4">
+            <label for="categoria">Categoría:</label>
+            <input type="text" class="form-control" name="categoria" id="categoria" required>
+        </div>
+    </div>
+    <div>
       <div class="form-group">
         <label for="unidad">Unidad:</label>
         <input type="text" class="form-control" name="unidad" id="unidad" required>
@@ -131,6 +134,7 @@ include('header.php');
       <div class="container">
         <button type="submit" class="btn btn-primary">Enviar</button>
       </div>
+    </div>
     </form>
     <div class="container">
       <a href='http://localhost:3000/vista_tabla.php'>
