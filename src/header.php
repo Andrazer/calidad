@@ -14,5 +14,5 @@
 <body>
     <div class="container mx-auto">
     <div class="d-flex justify-content-center mt-3">
-        <img src="img/baner.jpg" class="img-fluid rounded mb-3" alt="banner CdlE">
+        <img src="img/baner.jpg" class="img-fluid rounded mb-3 rounded-4 shadow border border-3 border-secondary border-dotted" alt="banner CdlE">
     </div>

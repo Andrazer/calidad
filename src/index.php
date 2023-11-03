@@ -22,8 +22,12 @@ include('header.php');
     }
   ?>
 
-  <div class="container" id="formulario">
-    <h1 class="text-primary">Formulario de Calidad de la enseñanza</h1>
+  <div class="container rounded-4 shadow border border-3 border-secondary border-dotted p-3" id="formulario">
+    <div class="container">
+      <div class="container">
+        <h1 class="text-secondary fw-bold">Formulario de Calidad de la enseñanza</h1>
+      </div>
+    </div>
     <?php
     $formularioVisible = true; // Variable para controlar la visibilidad del formulario
 
@@ -71,7 +75,7 @@ include('header.php');
                 <p>Datos insertados correctamente en la base de datos.</p>
                 
                 <a href='http://localhost:3000/'>
-                  <button type='submit' class='btn btn-primary'>Volver</button>
+                  <button type='submit' class='btn btn-light fw-bold position-relative top-50 start-50 translate-middle'>Volver</button>
                 </a>
                 ";
             } else {
@@ -90,63 +94,90 @@ include('header.php');
         // Mostrar el formulario si la variable $formularioVisible es verdadera
     ?>
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-      <div class="container d-flex">
-        <div class="form-group col-4">
+      <div class="container d-flex pt-3">
+        <div class="container form-group col-3 fw-bold">
           <label for="t_incidencia">Tipo de Incidencia:</label>
-            <select class="form-control" name="t_incidencia" id="t_incidencia">
+            <select class="form-control mt-2" name="t_incidencia" id="t_incidencia">
               <option value="RECLAMACION">RECLAMACIÓN</option>
               <option value="SUGERENCIA">SUGERENCIA</option>
               <option value="QUEJA">QUEJA</option>
             </select>
         </div>
-        <div class="form-group col-4">
+        <div class="container form-group col-3 fw-bold">
           <label for="t_usuario">Tipo de Usuario:</label>
-            <select class="form-control" name="t_usuario" id="t_usuario" required>
+            <select class="form-control mt-2" name="t_usuario" id="t_usuario" required>
               <option value="PROFESOR">PROFESOR</option>
               <option value="ALUMNO">ALUMNO</option>
             </select>
         </div>
-        <div class="form-group col-4">
+        <div class="container form-group col-3 fw-bold">
             <label for="categoria">Categoría:</label>
-            <input type="text" class="form-control" name="categoria" id="categoria" required>
+            <input type="text" class="form-control mt-2" name="categoria" id="categoria" required>
         </div>
-    </div>
-    <div>
-      <div class="form-group">
-        <label for="unidad">Unidad:</label>
-        <input type="text" class="form-control" name="unidad" id="unidad" required>
+
+        <div class="container form-group col-3 fw-bold">
+          <label for="unidad">Unidad:</label>
+          <input type="text" class="form-control mt-2" name="unidad" id="unidad" required>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="descripcion">Descripción:</label>
-        <textarea class="form-control" name="descripcion" id="descripcion" rows="4" required></textarea>
-      </div>
-      <div class="form-group">
-        <label for="respuesta">Respuesta:</label>
-          <select class="form-control" name="respuesta" id="respuesta" required>
-            <option value="0">No</option>
-            <option value="1">Sí</option>
-          </select>
-      </div>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="text" class="form-control" name="email" id="email">
-      </div>
+
       <div class="container">
-        <button type="submit" class="btn btn-primary">Enviar</button>
-      </div>
+        <div class="form-group fw-bold pt-3">
+          <label for="descripcion">Descripción:</label>
+          <textarea class="form-control mt-2" name="descripcion" id="descripcion" rows="8" required></textarea>
+        </div>
+        <div class="container d-flex pt-3">
+          <!-- <div class="container form-group col-3 fw-bold">
+            <label for="respuesta">Respuesta:</label>
+              <select class="form-control mt-2" name="respuesta" id="respuesta" required>
+                <option value="0">No</option>
+                <option value="1">Sí</option>
+              </select>
+          </div> -->
+          <div class="container form-group col-3 fw-bold form-check form-switch">
+          <input type="hidden" name="respuesta" value="no">
+
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onchange="actualizarRespuesta()">
+            <label class="form-check-label" for="respuesta">¿Solicita respuesta?</label>
+          </div>
+          <div class="container form-group col-6 fw-bold">
+            <label for="email">Email:</label>
+            <input type="text" class="form-control mt-2" name="email" id="email">
+          </div>
+
+          <div class="container form-group col-3 fw-bold">
+          <button type="submit" class="btn btn-light fw-bold align-text-top">Enviar</button>
+          </div>
+        </div></div>
     </div>
     </form>
-    <div class="container">
-      <a href='http://localhost:3000/vista_tabla.php'>
-        <button type='submit' class='btn btn-primary'>Lista de sugerencias</button>
-      </a>
-    </div>
-    <?php
+  <?php
     }
-    ?>
+  ?>
 </div>
 
+<div class="container">
+  <div class="container">
+    <a href='http://localhost:3000/vista_tabla.php'>
+      <button type='submit' class='btn btn-light fw-bold position-absolute pt-5 top-0 start-20 translate-middle'>Lista de sugerencias</button>
+    </a>
+  </div>
+</div>
   
-  <script src="assets/js/bootstrap.min.js"></script>
-</body>
-</html>
+<script>
+function actualizarRespuesta() {
+  var checkbox = document.getElementById("flexSwitchCheckDefault");
+  var respuestaField = document.getElementsByName("respuesta")[0]; // Utiliza getElementsByName para obtener el primer campo con ese nombre
+
+  if (checkbox.checked) {
+    respuestaField.value = "Si";
+  } else {
+    respuestaField.value = "No";
+  }
+}
+</script>
+
+<?php
+// inicio.php
+include('footer.php');
+?>

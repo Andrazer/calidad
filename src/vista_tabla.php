@@ -17,9 +17,9 @@ include('header.php');
     $result = $conn->query($select_sql);
     ?>
 
-    <div class="container">
-        <h1 class="text-primary">Registros de la Base de Datos</h1>
-        <div class="fixed-table">
+    <div class="container rounded-4 shadow border border-3 border-secondary border-dotted p-3">
+        <h1 class="text-secondary fw-bold">Registros de la Base de Datos</h1>
+        <div class="fixed-table pt-3">
             <table class='table table-striped table-hover'>
                 <tr>
                     <th>ID</th>
@@ -58,11 +58,12 @@ include('header.php');
         </div>
         <div class="container">
             <a href='http://localhost:3000/'>
-                <button type='submit' class='btn btn-primary'>Volver</button>
+                <button type='submit' class='btn btn-light fw-bold'>Volver</button>
             </a>
         </div>
-    <script src="assets/js/bootstrap.min.js"></script>
-    </div>
 
-</body>
-</html>
+    </div>
+<?php
+// inicio.php
+include('footer.php');
+?>
