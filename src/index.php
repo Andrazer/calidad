@@ -13,13 +13,14 @@ include('header.php');
 
     // Crear la conexión
     $conn = new mysqli($servername, $username, $password, $dbname);
-
+  /*
     // Verificar la conexión
     if ($conn->connect_error) {
         die('<p class="text-danger">(Conexión fallida)</p>' . $conn->connect_error);
     } else {
         echo '<p class="text-primary">(Conectado)</p>';
     }
+  */
   ?>
 
   <div class="container rounded-4 shadow border border-3 border-secondary border-dotted p-3" id="formulario">
@@ -120,33 +121,27 @@ include('header.php');
           <input type="text" class="form-control mt-2" name="unidad" id="unidad" required>
         </div>
       </div>
-
       <div class="container">
         <div class="form-group fw-bold pt-3">
           <label for="descripcion">Descripción:</label>
           <textarea class="form-control mt-2" name="descripcion" id="descripcion" rows="8" required></textarea>
         </div>
         <div class="container d-flex pt-3">
-          <!-- <div class="container form-group col-3 fw-bold">
+          <div class="container form-group col-3 fw-bold">
             <label for="respuesta">Respuesta:</label>
-              <select class="form-control mt-2" name="respuesta" id="respuesta" required>
-                <option value="0">No</option>
-                <option value="1">Sí</option>
-              </select>
-          </div> -->
-          <div class="container form-group col-3 fw-bold form-check form-switch">
-          <input type="hidden" name="respuesta" value="no">
-
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onchange="actualizarRespuesta()">
-            <label class="form-check-label" for="respuesta">¿Solicita respuesta?</label>
+            <select class="form-control mt-2" name="respuesta" id="respuesta" required>
+              <option value="No">No</option>
+              <option value="Si">Sí</option>
+            </select>
           </div>
+
           <div class="container form-group col-6 fw-bold">
             <label for="email">Email:</label>
             <input type="text" class="form-control mt-2" name="email" id="email">
           </div>
 
-          <div class="container form-group col-3 fw-bold">
-          <button type="submit" class="btn btn-light fw-bold align-text-top">Enviar</button>
+          <div class="container form-group col-3 fw-bold d-flex align-items-center">
+          <button type="submit" class="btn btn-lg btn-light fw-bold align-text-top mt-auto">Enviar</button>
           </div>
         </div></div>
     </div>
@@ -163,21 +158,24 @@ include('header.php');
     </a>
   </div>
 </div>
-  
-<script>
-function actualizarRespuesta() {
-  var checkbox = document.getElementById("flexSwitchCheckDefault");
-  var respuestaField = document.getElementsByName("respuesta")[0]; // Utiliza getElementsByName para obtener el primer campo con ese nombre
 
-  if (checkbox.checked) {
-    respuestaField.value = "Si";
+<script>
+document.getElementById("respuesta").addEventListener("change", function() {
+  var emailField = document.getElementById("email");
+
+  if (this.value === "Si") {
+    emailField.required = true;
   } else {
-    respuestaField.value = "No";
+    emailField.required = false;
   }
-}
+});
+
 </script>
 
 <?php
 // inicio.php
 include('footer.php');
 ?>
+
+
+

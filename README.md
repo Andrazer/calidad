@@ -83,12 +83,17 @@ Formulario web de registro de reclamaciones/sugerencias
         categoria VARCHAR(100),
         unidad VARCHAR(100),
         descripcion VARCHAR(500),
-        respuesta BOOLEAN,
+        respuesta ENUM('Si', 'No'),
         email VARCHAR(255),
         fecha DATE,
         hora TIME
     );
     ```
 
+
+
 DROP TABLE mi_basededatos.Calidad;
 select * from mi_basededatos.Calidad;
+
+ALTER TABLE mi_basededatos.Calidad
+MODIFY respuesta ENUM('Si', 'No');
