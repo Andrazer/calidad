@@ -37,8 +37,10 @@ include('header.php');
         $t_usuario = $_POST["t_usuario"];
         $categoria = $_POST["categoria"];
         $unidad = $_POST["unidad"];
-        $descripcion = $_POST["descripcion"];
-    
+        //$descripcion = $_POST["descripcion"];
+
+        $descripcion = mysqli_real_escape_string($conn, $_POST["descripcion"]);
+
         // Realizar una consulta para verificar si el registro ya existe
         $sql = "SELECT id FROM Calidad WHERE
                 t_incidencia = ? AND
@@ -68,7 +70,7 @@ include('header.php');
                 die("Error en la preparación de la consulta de inserción: " . $conn->error);
             }
     
-            $insert_stmt->bind_param("ssssissss", $t_incidencia, $t_usuario, $categoria, $unidad, $descripcion, $respuesta, $email, $fecha, $hora);
+            $insert_stmt->bind_param("sssssssss", $t_incidencia, $t_usuario, $categoria, $unidad, $descripcion, $respuesta, $email, $fecha, $hora);
     
             if ($insert_stmt->execute() === true) {
                 $formularioVisible = false; // Ocultar el formulario después de enviar
@@ -98,7 +100,7 @@ include('header.php');
       <div class="container d-flex pt-3">
         <div class="container form-group col-3 fw-bold">
           <label for="t_incidencia">Tipo de Incidencia:</label>
-            <select class="form-control mt-2" name="t_incidencia" id="t_incidencia">
+            <select class="form-control mt-2 border border-secondary name="t_incidencia" id="t_incidencia">
               <option value="RECLAMACION">RECLAMACIÓN</option>
               <option value="SUGERENCIA">SUGERENCIA</option>
               <option value="QUEJA">QUEJA</option>
@@ -106,30 +108,30 @@ include('header.php');
         </div>
         <div class="container form-group col-3 fw-bold">
           <label for="t_usuario">Tipo de Usuario:</label>
-            <select class="form-control mt-2" name="t_usuario" id="t_usuario" required>
+            <select class="form-control mt-2 border border-secondary" name="t_usuario" id="t_usuario" required>
               <option value="PROFESOR">PROFESOR</option>
               <option value="ALUMNO">ALUMNO</option>
             </select>
         </div>
         <div class="container form-group col-3 fw-bold">
             <label for="categoria">Categoría:</label>
-            <input type="text" class="form-control mt-2" name="categoria" id="categoria" required>
+            <input type="text" class="form-control mt-2 border border-secondary" name="categoria" id="categoria" required>
         </div>
 
         <div class="container form-group col-3 fw-bold">
           <label for="unidad">Unidad:</label>
-          <input type="text" class="form-control mt-2" name="unidad" id="unidad" required>
+          <input type="text" class="form-control mt-2 border border-secondary" name="unidad" id="unidad" required>
         </div>
       </div>
       <div class="container">
         <div class="form-group fw-bold pt-3">
           <label for="descripcion">Descripción:</label>
-          <textarea class="form-control mt-2" name="descripcion" id="descripcion" rows="8" required></textarea>
+          <textarea class="form-control mt-2 border border-secondary" name="descripcion" id="descripcion" rows="8" required></textarea>
         </div>
         <div class="container d-flex pt-3">
           <div class="container form-group col-3 fw-bold">
             <label for="respuesta">Respuesta:</label>
-            <select class="form-control mt-2" name="respuesta" id="respuesta" required>
+            <select class="form-control mt-2 border border-secondary" name="respuesta" id="respuesta" required>
               <option value="No">No</option>
               <option value="Si">Sí</option>
             </select>
@@ -137,11 +139,11 @@ include('header.php');
 
           <div class="container form-group col-6 fw-bold">
             <label for="email">Email:</label>
-            <input type="text" class="form-control mt-2" name="email" id="email">
+            <input type="text" class="form-control mt-2 border border-secondary" name="email" id="email">
           </div>
 
           <div class="container form-group col-3 fw-bold d-flex align-items-center">
-          <button type="submit" class="btn btn-lg btn-light fw-bold align-text-top mt-auto">Enviar</button>
+          <button type="submit" class="btn btn-lg btn-outline-secondary fw-bold align-text-top mt-auto">Enviar</button>
           </div>
         </div></div>
     </div>

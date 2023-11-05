@@ -19,8 +19,8 @@ $result = $conn->query($select_sql);
 
 <div class="container rounded-4 shadow border border-3 border-secondary border-dotted p-3">
     <h1 class="text-secondary fw-bold">Registros de la Base de Datos</h1>
-    <div class="table-responsive">
-        <table class="table table-striped table-hover" id="miTabla">
+    <div class="table-responsive border border-secondary" style="max-height: 50vh;">
+        <table class="table table-striped table-hover table-responsive" id="miTabla">
             <tr>
                 <th>ID</th>
                 <th>Tipo de Incidencia</th>
@@ -56,13 +56,15 @@ $result = $conn->query($select_sql);
             ?>
         </table>
     </div>
-    <div class="container">
-        <a href='http://localhost:3000/'>
-            <button type='submit' class='btn btn-light fw-bold'>Volver</button>
-        </a>
-    </div>
-    <div class="container form-group col-3 fw-bold d-flex align-items-center justify-content-end">
-        <button class="btn btn-success fw-bold" id="exportButton">CSV</button>
+    <div class="container p-1 form-group fw-bold d-flex">
+      <!--<div class="container">-->
+          <a href='http://localhost:3000/'>
+              <button type='submit' class='btn btn-outline-secondary fw-bold m-1'>Volver</button>
+          </a>
+      <!--</div>-->
+      <!--<div class="container form-group col-3 fw-bold d-flex align-items-center justify-content-end">-->
+          <button class="btn btn-outline-success fw-bold m-1" id="exportButton">CSV</button>
+      <!--</div>-->
     </div>
 </div>
 
