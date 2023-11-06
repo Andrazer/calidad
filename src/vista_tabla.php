@@ -21,7 +21,7 @@ $result = $conn->query($select_sql);
     <h1 class="text-secondary fw-bold">Registros de la Base de Datos</h1>
     <div class="table-responsive border border-secondary" style="max-height: 50vh;">
         <table class="table table-striped table-hover table-responsive" id="miTabla">
-            <tr>
+            <tr style="position: sticky; top: 0; background-color: #fff;">
                 <th>ID</th>
                 <th>Tipo de Incidencia</th>
                 <th>Tipo de Usuario</th>
